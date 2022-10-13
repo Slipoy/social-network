@@ -11,6 +11,9 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Bar from "./component/main/MiniBar/minibar";
 
+
+
+
 function App() {
   return (
       <BrowserRouter>
@@ -20,7 +23,7 @@ function App() {
                   <Nav/>
                   <Routes>
                       <Route path="profile" element={<Section name="section"/>}/>
-                      <Route path="message" element={<Dialogs/>}/>
+                      <Route path="message/*" element={<Dialogs />}/>
                       <Route path="videos" element={<Videos/>}/>
                   </Routes>
                   <Bar/>
