@@ -1,0 +1,22 @@
+nav{
+    width: 10%;
+    height: 500px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: lightseagreen;
+    text-align: center;
+
+    .navLink{
+        width: 80%;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+        background-color: aliceblue;
+        border-radius: 20px;
+        text-decoration: none;
+        border: 1px solid black;
+
+    }
+}

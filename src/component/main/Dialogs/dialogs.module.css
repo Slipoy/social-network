@@ -1,0 +1,26 @@
+.dialogs {
+  background: lightgray;
+  width: 80%;
+  height: 1000px;
+  display: flex;
+}
+.dialogs .dialogsItems {
+  border: 2px solid red;
+  width: 30%;
+}
+.dialogs .dialogsItems .user {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.dialogs .dialogsItems img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.dialogs .messages {
+  width: 70%;
+  border: 2px solid black;
+}
+
+/*# sourceMappingURL=dialogs.module.css.map */
