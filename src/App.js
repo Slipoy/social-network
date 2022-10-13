@@ -19,9 +19,9 @@ function App() {
               <Main>
                   <Nav/>
                   <Routes>
-                      <Route path="/profile" element={<Section name="section"/>}/>
-                      <Route path="/message" element={<Dialogs/>}/>
-                      <Route path="/videos" element={<Videos/>}/>
+                      <Route path="profile" element={<Section name="section"/>}/>
+                      <Route path="message" element={<Dialogs/>}/>
+                      <Route path="videos" element={<Videos/>}/>
                   </Routes>
                   <Bar/>
               </Main>
