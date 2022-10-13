@@ -12,12 +12,12 @@ import user6 from "./icon/photo_2022-10-06_12-19-26.jpg"
 
 
 let array = [
-    {id: 1, name: 'Alex', icon: user1},
-    {id: 2, name: 'Alex1', icon: user2},
-    {id: 3, name: 'Alex2', icon: user3},
-    {id: 4, name: 'Alex3', icon: user4},
-    {id: 5, name: 'Alex4', icon: user5},
-    {id: 6, name: 'Alex5', icon: user6}]
+    {id: 1, name: 'Alex Ivanov', icon: user1},
+    {id: 2, name: 'Mihail Ivanov', icon: user2},
+    {id: 3, name: 'Olga Ivanov', icon: user3},
+    {id: 4, name: 'Vadim Ivanov', icon: user4},
+    {id: 5, name: 'Kiril Ivanov', icon: user5},
+    {id: 6, name: 'Nastya Ivanov', icon: user6}]
 
 let messageDialog = [
     {id: 1, message: 'Hello'},
@@ -29,7 +29,7 @@ let messageDialog = [
 const DialogItem = (props) => {
     let path = 'dialogs/' + props.id
     return(
-        <div>
+        <div className={style.userBox}>
             <NavLink to={path} className={style.user}>
                 <img src={props.icon} alt="№"/>
                 <p>{props.name}</p>
@@ -40,7 +40,7 @@ const DialogItem = (props) => {
 
 const Message = (props)=> {
     return(
-        <div>
+        <div className={style.message}>
             <p>{props.message}</p>
         </div>
     )
@@ -51,9 +51,11 @@ const Dialogs = ()=>{
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
+                <p className={style.description}>Ваши друзья</p>
                 {dialogsElements}
             </div>
             <div className={style.messages}>
+                <p className={style.historyDescription}>Ваши сообщения</p>
                 <Routes>
                     <Route path="dialogs/1" element={<Message message="Hi"/>}/>
                     <Route path="dialogs/2" element={<Message message="Hello"/>}/>
@@ -62,6 +64,7 @@ const Dialogs = ()=>{
                     <Route path="dialogs/5" element={<Message message="No ptopblem"/>}/>
                     <Route path="dialogs/6" element={<Message message="No!"/>}/>
                 </Routes>
+                <textarea name="" id="" cols="10" rows="10">Введиье смс</textarea>
             </div>
 
 
