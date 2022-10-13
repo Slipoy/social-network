@@ -11,14 +11,6 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Bar from "./component/main/MiniBar/minibar";
 
-
-
-
-
-
-
-
-
 function App() {
   return (
       <BrowserRouter>
