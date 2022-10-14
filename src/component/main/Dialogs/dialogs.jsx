@@ -11,20 +11,20 @@ import user6 from "./icon/photo_2022-10-06_12-19-26.jpg"
 
 
 
-let array = [
-    {id: 1, name: 'Alex Ivanov', icon: user1},
-    {id: 2, name: 'Mihail Ivanov', icon: user2},
-    {id: 3, name: 'Olga Ivanov', icon: user3},
-    {id: 4, name: 'Vadim Ivanov', icon: user4},
-    {id: 5, name: 'Kiril Ivanov', icon: user5},
-    {id: 6, name: 'Nastya Ivanov', icon: user6}]
-
-let messageDialog = [
-    {id: 1, message: 'Hello'},
-    {id: 2, message: 'Hi'},
-    {id: 3, message: 'Hi'},
-    {id: 4, message: 'Hi'}
-]
+// let dialogs = [
+//     {id: 1, name: 'Alex Ivanov', icon: user1},
+//     {id: 2, name: 'Mihail Ivanov', icon: user2},
+//     {id: 3, name: 'Olga Ivanov', icon: user3},
+//     {id: 4, name: 'Vadim Ivanov', icon: user4},
+//     {id: 5, name: 'Kiril Ivanov', icon: user5},
+//     {id: 6, name: 'Nastya Ivanov', icon: user6}]
+//
+// let messageDialog = [
+//     {id: 1, message: 'Hello'},
+//     {id: 2, message: 'Hi'},
+//     {id: 3, message: 'Hi'},
+//     {id: 4, message: 'Hi'}
+// ]
 
 const DialogItem = (props) => {
     let path = 'dialogs/' + props.id
@@ -46,8 +46,8 @@ const Message = (props)=> {
     )
 }
 
-const Dialogs = ()=>{
-    let dialogsElements = array.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)
+const Dialogs = (props)=>{
+    let dialogsElements = props.dialogs.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>

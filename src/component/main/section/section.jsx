@@ -1,11 +1,12 @@
 import React from "react";
 import style from "./section.module.css"
+import Posts from "./Posts/posts";
 
 
-const Section = ()=>{
+const Section = (props)=>{
     return (
         <section>
-            My page
+            <Posts state={props.state}/>
         </section>
     )
 }

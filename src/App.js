@@ -14,7 +14,8 @@ import Bar from "./component/main/MiniBar/minibar";
 
 
 
-function App() {
+
+function App(props) {
   return (
       <BrowserRouter>
           <div className="wrapper">
@@ -22,8 +23,8 @@ function App() {
               <Main>
                   <Nav/>
                   <Routes>
-                      <Route path="profile" element={<Section name="section"/>}/>
-                      <Route path="message/*" element={<Dialogs />}/>
+                      <Route path="profile" element={<Section name="section" state={props.appState.dataPosts}/>}/>
+                      <Route path="message/*" element={<Dialogs dialogs={props.appState.dialogsPage}/>}/>
                       <Route path="videos" element={<Videos/>}/>
                   </Routes>
                   <Bar/>
