@@ -8,6 +8,7 @@ import style from './posts.module.css'
 const Post = (props)=>{
     return(
         <div className={style.post}>
+            TEST
             <img src={img} alt="#"/>
             <p>{props.message}</p>
             <button>Likes</button>
