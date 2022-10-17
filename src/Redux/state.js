@@ -84,7 +84,7 @@ let store = {
                 message: this._state.dialogsPage.newMessage
             }
             this._state.dialogsPage.newMessage = "";
-            this._state.dialogsPage.dialogs.returnMessages.push(newMessage)
+            this._state.dialogsPage.dialogs[0].returnMessages.push(newMessage)
             this._callSubscriber(this._state);
         }else if(action.type === "UPDATE_NEW_MESSAGE_TEXT"){
             this._state.dialogsPage.newMessage = action.newTextMessage;
@@ -104,7 +104,7 @@ export const updateNewPostTextActionCreator = (text) => {
         newText: text
     }
 }
-export const addMessageActionCreator = ()=>{
+export const addMessageActionCreator = (index)=>{
     return{
         type: "ADD_MESSAGE",
     }

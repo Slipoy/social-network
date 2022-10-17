@@ -60,13 +60,12 @@ const Dialogs = (props)=>{
     console.log(state)
     let dialogsElements = state.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)
     let routeElement = state.map (route => <Route path={"dialogs/" + route.id} element={<Message key={route.id} message={route.message} incomingMes={route.returnMessages}/>}/>)
-    let index = props.key
-    console.log(index)
+
 
     let newMessage = React.createRef()
     let sendMessage = ()=>{
         newMessage.current.value = ""
-        props.dispatch(addMessageActionCreator(index))
+        props.dispatch(addMessageActionCreator())
     }
     let onMessageChange = () => {
         let text = newMessage.current.value
