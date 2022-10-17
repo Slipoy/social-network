@@ -6,7 +6,7 @@ import Posts from "./Posts/posts";
 const Section = (props)=>{
     return (
         <section>
-            <Posts state={props.state}/>
+            <Posts posts={props.store} dispatch={props.dispatch}/>
         </section>
     )
 }

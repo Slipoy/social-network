@@ -23,8 +23,8 @@ function App(props) {
               <Main>
                   <Nav/>
                   <Routes>
-                      <Route path="profile" element={<Section name="section" state={props.appState.dataPosts}/>}/>
-                      <Route path="message/*" element={<Dialogs dialogs={props.appState.dialogsPage}/>}/>
+                      <Route path="profile" element={<Section name="section" store={props.store} dispatch={props.dispatch}/>}/>
+                      <Route path="message/*" element={<Dialogs dialogs={props.store} dispatch={props.dispatch}/>}/>
                       <Route path="videos" element={<Videos/>}/>
                   </Routes>
                   <Bar/>
