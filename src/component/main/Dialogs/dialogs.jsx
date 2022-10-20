@@ -8,11 +8,7 @@ import user3 from "./icon/photo_2022-10-06_12-19-26.jpg"
 import user4 from "./icon/photo_2022-10-06_12-19-26.jpg"
 import user5 from "./icon/photo_2022-10-06_12-19-26.jpg"
 import user6 from "./icon/photo_2022-10-06_12-19-26.jpg"
-import {
-    addMessageActionCreator,
-    updateNewMessageTextActionCreator,
-    updateNewPostTextActionCreator
-} from "../../../Redux/state";
+import {sendMessageCreator, updateNewMessageCreator} from "../../../Redux/dialogReducer";
 
 
 
@@ -56,20 +52,17 @@ const RouteElement = (props)=> {
 
 
 const Dialogs = (props)=>{
-    let state = props.dialogs._state.dialogsPage.dialogs
-    console.log(state)
-    let dialogsElements = state.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)
-    let routeElement = state.map (route => <Route path={"dialogs/" + route.id} element={<Message key={route.id} message={route.message} incomingMes={route.returnMessages}/>}/>)
-
-
+    let dialogsElements = props.dialogsPage.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)
+    let routeElement = props.dialogsPage.dialogs.map (route => <Route path={"dialogs/" + route.id} element={<Message key={route.id} message={route.message} incomingMes={route.returnMessages}/>}/>)
     let newMessage = React.createRef()
-    let sendMessage = ()=>{
+    let onSendMessage = ()=>{
         newMessage.current.value = ""
-        props.dispatch(addMessageActionCreator())
+        props.sendMessage()
+
     }
-    let onMessageChange = () => {
-        let text = newMessage.current.value
-        props.dispatch(updateNewMessageTextActionCreator(text))
+    let onMessageChange = (e) => {
+        let body = e.target.value
+        props.updateNewMessageBody(body)
     }
     return (
         <div className={style.dialogs}>
@@ -83,7 +76,7 @@ const Dialogs = (props)=>{
                     {routeElement}
                 </RouteElement>
                 <textarea onChange={onMessageChange} ref={newMessage}></textarea>
-                <button onClick={sendMessage} className={style.sendBtn}>Send</button>
+                <button onClick={onSendMessage} className={style.sendBtn}>Send</button>
             </div>
         </div>
     )
