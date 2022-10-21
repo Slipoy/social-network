@@ -2,16 +2,6 @@ import React from "react";
 import style from "./dialogs.module.css"
 import {NavLink} from "react-router-dom";
 import {Route, Routes} from "react-router-dom";
-import user1 from "./icon/photo_2022-10-06_12-19-26.jpg"
-import user2 from "./icon/photo_2022-10-06_12-19-26.jpg"
-import user3 from "./icon/photo_2022-10-06_12-19-26.jpg"
-import user4 from "./icon/photo_2022-10-06_12-19-26.jpg"
-import user5 from "./icon/photo_2022-10-06_12-19-26.jpg"
-import user6 from "./icon/photo_2022-10-06_12-19-26.jpg"
-import {sendMessageCreator, updateNewMessageCreator} from "../../../Redux/dialogReducer";
-
-
-
 
 
 const DialogItem = (props) => {
@@ -27,56 +17,33 @@ const DialogItem = (props) => {
 }
 
 const Message = (props)=> {
-    let incomingMessage = props.incomingMes.map(incMes => <p>{incMes.message}</p>)
+    let messageText = React.createRef()
     return(
-        <div className={style.message}>
+        <div >
             <div>
-                <p>{props.message}</p>
+                {props.messages.map(mes => <p className={style.message}>{mes.message}</p>)}
             </div>
             <div>
-                {incomingMessage}
+                <textarea ref={messageText} onChange={()=>{props.btnChange(messageText.current.value)}}></textarea>
+                <button onClick={()=>{messageText.current.value = ""; props.btnSend(props.userId)}} className={style.sendBtn}>Send</button>
             </div>
 
         </div>
     )
 }
 
-const RouteElement = (props)=> {
-    return(
-        <Routes>
-            {props.children}
-        </Routes>
-    )
-}
-
-
-
 const Dialogs = (props)=>{
-    let dialogsElements = props.dialogsPage.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)
-    let routeElement = props.dialogsPage.dialogs.map (route => <Route path={"dialogs/" + route.id} element={<Message key={route.id} message={route.message} incomingMes={route.returnMessages}/>}/>)
-    let newMessage = React.createRef()
-    let onSendMessage = ()=>{
-        newMessage.current.value = ""
-        props.sendMessage()
-
-    }
-    let onMessageChange = (e) => {
-        let body = e.target.value
-        props.updateNewMessageBody(body)
-    }
     return (
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
                 <p className={style.description}>Ваши друзья</p>
-                {dialogsElements}
+                {props.users.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)}
             </div>
             <div className={style.messages}>
                 <p className={style.historyDescription}>Ваши сообщения</p>
-                <RouteElement>
-                    {routeElement}
-                </RouteElement>
-                <textarea onChange={onMessageChange} ref={newMessage}></textarea>
-                <button onClick={onSendMessage} className={style.sendBtn}>Send</button>
+                <Routes>
+                    {props.users.map(route => <Route path={"dialogs/" + route.id} element={<Message userId={route.id} btnChange={props.messageChange} btnSend={props.send} messages={route.returnMessages}/>}/>)}
+                </Routes>
             </div>
         </div>
     )

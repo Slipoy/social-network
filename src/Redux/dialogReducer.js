@@ -8,16 +8,10 @@ import dialogs from "../component/main/Dialogs/dialogs";
 
 const SEND_MESSAGE = "SEND_MESSAGE"
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
+const SET_DIALOGS = "SET_DIALOGS"
 
 let initialState = {
-    dialogs:
-        [
-            {id: 0, name: 'Alex Ivanov', icon: user1, message: "Hello", returnMessages: [{message: "Hi"}]},
-            {id: 2, name: 'Mihail Ivanov', icon: user2, message:"Hi", returnMessages: [{id:1, message: "Hu"}]},
-            {id: 3, name: 'Olga Ivanov', icon: user3, message:"No", returnMessages: [{id:2, message: "Hf"}]},
-            {id: 4, name: 'Vadim Ivanov', icon: user4, message:"Maybe", returnMessages: [{id:3, message: "Ha"}]},
-            {id: 5, name: 'Kiril Ivanov', icon: user5, message:"By", returnMessages: [{id:4, message: "Ho"}]},
-            {id: 6, name: 'Nastya Ivanov', icon: user6, message:"Good!", returnMessages: [{id:5, message: "Hi"}]}],
+    dialogs: [],
     newMessageBody: ""
 }
 const dialogsReducer = (state = initialState, action)=>{
@@ -28,28 +22,36 @@ const dialogsReducer = (state = initialState, action)=>{
                 newMessageBody: action.body
             }
         case SEND_MESSAGE:
-            let body = {
-                id:0,
-                message: state.newMessageBody
+            let body = state.newMessageBody
+            let clone = {
+                ...state, ...state.dialogs[action.count].returnMessages.push({message: body})
             }
             return {
-                ...state,
-                newMessageBody: ""
-
+                ...state, dialogs: [...clone.dialogs], newMessageBody: ""
             }
+        case SET_DIALOGS:{
+            return {...state, dialogs: [...action.dialogs]}
+        }
         default: return state
     }
 }
 
-export const updateNewMessageCreator = (text)=>{
+export const updateNewMessageCreator = (body)=>{
     return{
         type: UPDATE_NEW_MESSAGE_BODY,
-        body: text
+        body
     }
 }
-export const sendMessageCreator = ()=>{
+export const sendMessageCreator = (count)=>{
     return{
         type: SEND_MESSAGE,
+        count
+    }
+}
+export const setDialogsCreator = (dialogs) =>{
+    return{
+        type: SET_DIALOGS,
+        dialogs
     }
 }
 export default dialogsReducer

@@ -62,7 +62,6 @@
   padding: 10px;
   border-radius: 20px;
   border: 1px solid black;
-  display: inline-block;
 }
 .dialogs .messages .historyDescription {
   background-color: aqua;

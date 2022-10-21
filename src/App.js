@@ -11,7 +11,7 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Bar from "./component/main/MiniBar/minibar";
 import DialogContainer from "./component/main/Dialogs/dialogContainer";
-import UsersContainer from "./component/main/section/Posts/Users/UsersContainer";
+import UsersContainer from "./component/main/section/Users/UsersContainer";
 
 
 

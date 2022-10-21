@@ -17,23 +17,13 @@ const Post = (props)=>{
 
 
 const Posts = (props)=>{
-    let postItem = props.posts.map(post => <Post message={post.message} id={post.id} likes={post.likeCount}/>)
     let newPostElement = React.createRef()
-    let onAddPost = ()=>{
-        newPostElement.current.value = ""
-        props.addPost();
-    }
-    let onPostChange = () => {
-        let text = newPostElement.current.value
-        props.updateNewPostText(text)
-    }
     return(
         <div>
-            <textarea ref={newPostElement} onChange={onPostChange}></textarea>
-            <button onClick={onAddPost}>Post</button>
-            {postItem}
+            <textarea ref={newPostElement} onChange={()=>{props.changePost(newPostElement.current.value)}}></textarea>
+            <button onClick={()=>{newPostElement.current.value = ""; props.addPost()}}>Post</button>
+            {props.posts.map(post => <Post message={post.message} key={post.id} likes={post.likeCount}/>)}
         </div>
     )
 }
-
 export default Posts

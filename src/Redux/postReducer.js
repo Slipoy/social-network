@@ -1,15 +1,12 @@
+import posts from "../component/main/section/Posts/posts";
+import {type} from "@testing-library/user-event/dist/type";
+
 const ADD_POST = "ADD_POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
+const SET_POSTS = "SET_POSTS"
 
 let initialState = {
-    posts: [
-        {id: 1, message: 'first message', likeCount: 2},
-        {id: 2, message: '2 message', likeCount: 20},
-        {id: 3, message: '3 message', likeCount: 12},
-        {id: 4, message: '4 message', likeCount: 22},
-        {id: 5, message: 'sfdsshdfjdf message', likeCount: 5},
-        {id: 6, message: '6 message', likeCount: 2}
-    ],
+    posts: [],
     newPostText: ""
 }
 const postReducer = (state = initialState, action)=>{
@@ -31,6 +28,9 @@ const postReducer = (state = initialState, action)=>{
                 newPostText: action.newText
             }
         }
+        case SET_POSTS:{
+            return {...state, posts: [...action.posts]}
+        }
         default: return state
     }
 }
@@ -45,6 +45,12 @@ export const updateNewPostTextActionCreator = (text) => {
     return{
         type: "UPDATE_NEW_POST_TEXT",
         newText: text
+    }
+}
+export const setPostsCreator = (posts) =>{
+    return{
+        type: SET_POSTS,
+        posts
     }
 }
 
