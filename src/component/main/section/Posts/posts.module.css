@@ -1,5 +1,72 @@
-.post img {
-  width: 500px;
+.postsDisplay {
+  width: 69%;
+  overflow: scroll;
+  background-color: lightskyblue;
+  border-radius: 10px;
+}
+.postsDisplay .createPost textarea {
+  width: 80%;
+}
+.postsDisplay .createPost p {
+  text-align: center;
+  color: aliceblue;
+  font-size: 80px;
+  background-color: blueviolet;
+  height: 100px;
+}
+.postsDisplay .posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.postsDisplay .post {
+  width: 90%;
+}
+.postsDisplay .post .userPosting {
+  display: flex;
+}
+.postsDisplay .post .userPosting p {
+  font-weight: bold;
+}
+.postsDisplay .post .userPosting span {
+  font-size: 15px;
+}
+.postsDisplay .post .userPosting img {
+  width: 40px;
+  border-radius: 50%;
+}
+.postsDisplay .post .messagePost {
+  width: 100%;
+  background-color: lightgrey;
+  border-radius: 30px;
+  padding: 6px;
+  margin-bottom: 20px;
+}
+.postsDisplay .post .img {
+  text-align: center;
+  width: 100%;
+  border-radius: 30px;
+  background-color: aliceblue;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.postsDisplay .post .img img {
+  width: 300px;
+}
+.postsDisplay .post .dividingLine {
+  display: inline-block;
+  width: 100%;
+  border-top: 2px solid gray;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.postsDisplay .post .imgLike {
+  border-radius: 50%;
+}
+.postsDisplay .post .imgLike img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=posts.module.css.map */

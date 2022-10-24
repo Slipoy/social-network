@@ -1,6 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
-import {addPostActionCreator, setPostsCreator, updateNewPostTextActionCreator} from "../../../../Redux/postReducer";
+import {
+    addPostActionCreator,
+    setPostsCreator,
+    updateNewPostTextActionCreator,
+    upLikeCreator
+} from "../../../../Redux/postReducer";
 import Posts from "./posts";
 
 
@@ -11,12 +16,12 @@ class PostContainer extends React.Component{
     componentDidMount() {
         if (this.props.posts.length === 0){
             this.props.setPosts([
-                {id: 1, message: 'first message', likeCount: 2},
-                {id: 2, message: '2 message', likeCount: 20},
-                {id: 3, message: '3 message', likeCount: 12},
-                {id: 4, message: '4 message', likeCount: 22},
-                {id: 5, message: 'sfdsshdfjdf message', likeCount: 5},
-                {id: 6, message: '6 message', likeCount: 2}
+                {id: 1, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 2, like: false},
+                {id: 2, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 20, like: false},
+                {id: 3, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 12, like: false},
+                {id: 4, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 22, like: false},
+                {id: 5, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English. message', likeCount: 5, like: false},
+                {id: 6, message: '6 This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 2, like: false}
             ])
         }
     }
@@ -25,7 +30,8 @@ class PostContainer extends React.Component{
             <Posts
             posts={this.props.posts}
             addPost={this.props.addPost}
-            changePost={this.props.updateNewPostText}/>
+            changePost={this.props.updateNewPostText}
+            upLike={this.props.upLike}/>
         )
     }
 }
@@ -47,6 +53,9 @@ let mapDispatchToProps = (dispatch)=>{
         },
         setPosts: (posts)=>{
             dispatch(setPostsCreator(posts))
+        },
+        upLike: (key)=>{
+            dispatch(upLikeCreator(key))
         }
     }
 }

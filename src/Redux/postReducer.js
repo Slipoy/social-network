@@ -4,6 +4,7 @@ import {type} from "@testing-library/user-event/dist/type";
 const ADD_POST = "ADD_POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
 const SET_POSTS = "SET_POSTS"
+const UP_LIKE = "UP_LIKE"
 
 let initialState = {
     posts: [],
@@ -19,7 +20,7 @@ const postReducer = (state = initialState, action)=>{
             };
            return {
                ...state,
-               posts: [...state.posts, newPost],
+               posts: [newPost, ...state.posts],
                newPostText: ""
            }
         case UPDATE_NEW_POST_TEXT: {
@@ -30,6 +31,18 @@ const postReducer = (state = initialState, action)=>{
         }
         case SET_POSTS:{
             return {...state, posts: [...action.posts]}
+        }
+        case UP_LIKE:{
+            return {
+                ...state,  posts: state.posts.map(post => {
+                    if (post.id === action.key && !post.like){
+                        return {...post, likeCount: post.likeCount + 1, like: !post.like}
+                    }else if (post.id === action.key && post.like){
+                        return {...post, likeCount: post.likeCount - 1, like: !post.like}
+                    }
+                    return post
+                })
+            }
         }
         default: return state
     }
@@ -51,6 +64,13 @@ export const setPostsCreator = (posts) =>{
     return{
         type: SET_POSTS,
         posts
+    }
+}
+export const upLikeCreator = (key)=>{
+    return{
+        type: UP_LIKE,
+        key
+
     }
 }
 

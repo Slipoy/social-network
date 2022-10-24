@@ -1,4 +1,5 @@
 nav{
+    margin-top: 4%;
     width: 10%;
     height: 500px;
     border-radius: 20px;
@@ -7,7 +8,7 @@ nav{
     justify-content: space-evenly;
     background-color: lightseagreen;
     text-align: center;
-
+    position: fixed;
     .navLink{
         width: 80%;
         margin: 0 auto;

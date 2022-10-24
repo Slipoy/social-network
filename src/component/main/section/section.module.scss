@@ -1,0 +1,36 @@
+section{
+  display: flex;
+  justify-content: space-between;
+  margin: 4% auto;
+  width: 70%;
+  height: 1500px;
+  .mainPage{
+    border-radius: 10px;
+    background-color: lightskyblue;
+    width: 30%;
+    .follows{
+      display: flex;
+      justify-content: space-around;
+    }
+    span{
+      font-weight: bold;
+    }
+    img{
+      width: 100%;
+      border-radius: 50%;
+    }
+    .contactInfo{
+      margin: 0 auto;
+      width: 90%;
+      img{
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
+      p{
+        margin-top: 30px;
+        display: flex;
+      }
+    }
+  }
+}

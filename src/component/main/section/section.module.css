@@ -1,5 +1,38 @@
-
-section{
-    width: 80%;
-    background: lightblue;
+section {
+  display: flex;
+  justify-content: space-between;
+  margin: 4% auto;
+  width: 70%;
+  height: 1500px;
 }
+section .mainPage {
+  border-radius: 10px;
+  background-color: lightskyblue;
+  width: 30%;
+}
+section .mainPage .follows {
+  display: flex;
+  justify-content: space-around;
+}
+section .mainPage span {
+  font-weight: bold;
+}
+section .mainPage img {
+  width: 100%;
+  border-radius: 50%;
+}
+section .mainPage .contactInfo {
+  margin: 0 auto;
+  width: 90%;
+}
+section .mainPage .contactInfo img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+section .mainPage .contactInfo p {
+  margin-top: 30px;
+  display: flex;
+}
+
+/*# sourceMappingURL=section.module.css.map */

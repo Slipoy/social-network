@@ -12,6 +12,9 @@ const Bar = ()=>{
             <NavLink to="/№" className={style.barItem}></NavLink>
             <NavLink to="/№" className={style.barItem}></NavLink>
             <NavLink to="/№" className={style.barItem}></NavLink>
+            <NavLink to="/№" className={style.barItem}></NavLink>
+            <NavLink to="/№" className={style.barItem}></NavLink>
+            <NavLink to="/№" className={style.barItem}></NavLink>
         </div>
     )
 }

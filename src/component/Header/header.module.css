@@ -1,9 +1,11 @@
 header {
   background: lightseagreen;
   width: 100%;
-  margin: 20px auto;
-  height: 100px;
+  height: 50px;
   border-radius: 20px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
 }
 
 /*# sourceMappingURL=header.module.css.map */
