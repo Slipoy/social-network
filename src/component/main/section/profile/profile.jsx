@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../Dialogs/icon/photo_2022-10-06_12-19-26.jpg"
+import logo from "../../../../img/photo_2022-10-06_12-19-26.jpg"
 import style from "../section.module.css";
 import universLogo from "../../../../img/195496.png"
 import cityLogo from  "../../../../img/city.png"
@@ -8,33 +8,32 @@ import aboutMe from "../../../../img/aboutMe.png"
 
 
 
-
-const Profile = ()=>{
+const Profile = (props)=>{
+    console.log(props)
     return(
-        <div className={style.mainPage}>
-            <img src={logo} alt=""/>
+        <div className={style.mainPage}>{props.users.map(user=><div><img src={logo} alt=""/>
             <div className={style.follows}>
                 <div>
                     <p>Following</p>
-                    <span>10K</span>
+                    <span>{user.followers}</span>
                 </div>
                 <div>
                     <p>Followers</p>
-                    <span>12K</span>
+                    <span>{user.following}</span>
                 </div>
-
             </div>
             <div className={style.contactInfo}>
-                <p><img src={aboutMe} alt=""/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid deserunt dicta eos, explicabo fuga iusto laboriosam laborum, maiores maxime mollitia omnis recusandae reprehenderit sequi similique, vero voluptas. Ab, non?</p>
-                <p><img src={phoneLogo}/> +380687544395</p>
-                <p><img src={cityLogo} alt=""/>Ukraine / Kiev</p>
-                <p><img src={universLogo}/> "National Technical University of Ukraine
-                    "Kyiv Polytechnic Institute named after Igor Sykorsky""</p>
+                <p><img src={aboutMe} alt=""/>{user.aboutMe}</p>
+                <p><img src={phoneLogo}/>{user.phone}</p>
+                <p><img src={cityLogo} alt=""/>{user.city}</p>
+                <p><img src={universLogo}/>{user.university}</p>
             </div>
             <div>
                 <p>Videos</p>
-            </div>
+            </div></div> )}
+
         </div>
+
     )
 }
 

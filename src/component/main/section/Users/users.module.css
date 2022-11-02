@@ -1,0 +1,38 @@
+.usersDisplay {
+  margin: 4% auto 0 auto;
+  width: 69%;
+  max-height: 800px;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  min-height: 730px;
+  background-color: cornflowerblue;
+  overflow: scroll;
+}
+.usersDisplay .user {
+  width: 20%;
+  margin: 20px;
+  text-align: center;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+.usersDisplay .user .btnUnfollow {
+  background-color: lightcoral;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2px;
+}
+.usersDisplay .user .btnFollow {
+  background-color: lightskyblue;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2px;
+}
+.usersDisplay .user img {
+  width: 50%;
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=users.module.css.map */

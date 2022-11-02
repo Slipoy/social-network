@@ -1,20 +1,29 @@
 .list{
   background-color: lightseagreen;
-  width: 5%;
+  max-height: 720px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
-  text-align: center;
-  justify-content: space-evenly;
   align-items: center;
+  border-radius: 30px;
+  text-align: center;
   margin-top: 4%;
   position: fixed;
   right: 0;
-
   .barItem{
     width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: lightskyblue;
+    text-decoration: none;
+    margin-bottom: 10px;
+    p{
+      font-weight: bold;
+      font-size: 12px;
+      color: black;
+    }
+    img{
+      width: 100%;
+      border-radius: 50%;
+
+
+    }
   }
 }

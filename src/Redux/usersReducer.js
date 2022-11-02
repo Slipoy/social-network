@@ -1,4 +1,4 @@
-
+import image from "../img/photo_2022-10-06_12-19-26.jpg"
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';

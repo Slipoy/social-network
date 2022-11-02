@@ -2,12 +2,12 @@ import React from "react";
 import Dialogs from "./dialogs";
 import {connect} from "react-redux";
 import {sendMessageCreator, setDialogsCreator, updateNewMessageCreator} from "../../../Redux/dialogReducer";
-import user1 from "./icon/photo_2022-10-06_12-19-26.jpg";
-import user2 from "./icon/photo_2022-10-06_12-19-26.jpg";
-import user3 from "./icon/photo_2022-10-06_12-19-26.jpg";
-import user4 from "./icon/photo_2022-10-06_12-19-26.jpg";
-import user5 from "./icon/photo_2022-10-06_12-19-26.jpg";
-import user6 from "./icon/photo_2022-10-06_12-19-26.jpg";
+import user1 from "../../../img/photo_2022-10-06_12-19-26.jpg";
+import user2 from "../../../img/photo_2022-10-06_12-19-26.jpg";
+import user3 from "../../../img/photo_2022-10-06_12-19-26.jpg";
+import user4 from "../../../img/photo_2022-10-06_12-19-26.jpg";
+import user5 from "../../../img/photo_2022-10-06_12-19-26.jpg";
+import user6 from "../../../img/photo_2022-10-06_12-19-26.jpg";
 import dialogs from "./dialogs";
 
 class DialogContainer extends React.Component{
