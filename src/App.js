@@ -12,6 +12,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Bar from "./component/main/MiniBar/minibar";
 import DialogContainer from "./component/main/Dialogs/dialogContainer";
 import UsersContainer from "./component/main/section/Users/UsersContainer";
+import Login from "./component/main/Login/login";
 
 
 
@@ -25,10 +26,11 @@ function App() {
               <Main>
                   <Nav/>
                   <Routes>
-                      <Route path="profile/" element={<Section name="section" />}/>
+                      <Route path="profile/*" element={<Section name="section" />}/>
                       <Route path="message/*" element={<DialogContainer/>}/>
-                      <Route path='/users' element={<UsersContainer />}/>
-                      <Route path="videos" element={<Videos/>}/>
+                      <Route path='/users/' element={<UsersContainer />}/>
+                      <Route path="videos/" element={<Videos/>}/>
+                      <Route path="/login" element={<Login/>}/>
                   </Routes>
                   <Bar/>
               </Main>

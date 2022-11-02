@@ -3,6 +3,7 @@ import {setUsersProfile} from "../../../../Redux/profileReducer";
 import {connect} from "react-redux";
 import image from "../../../../img/photo_2022-10-06_12-19-26.jpg";
 import Profile from "./profile";
+import {Navigate} from "react-router-dom"
 
 
 
@@ -43,6 +44,7 @@ class ProfileContainer extends React.Component{
 let mapStateToProps = (state) =>{
     return{
         usersProfile: state.profilePage.usersProfile,
+        isAuth: state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch) => {

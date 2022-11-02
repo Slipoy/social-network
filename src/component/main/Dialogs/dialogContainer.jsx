@@ -9,6 +9,8 @@ import user4 from "../../../img/photo_2022-10-06_12-19-26.jpg";
 import user5 from "../../../img/photo_2022-10-06_12-19-26.jpg";
 import user6 from "../../../img/photo_2022-10-06_12-19-26.jpg";
 import dialogs from "./dialogs";
+import {Navigate} from "react-router-dom";
+import {setAuthUserData} from "../../../Redux/authReducer";
 
 class DialogContainer extends React.Component{
     constructor(props) {
@@ -26,6 +28,7 @@ class DialogContainer extends React.Component{
         }
     }
     render() {
+        if (this.props.isAuth === false) return <Navigate to={"/login"}/>
         return(
             <Dialogs users={this.props.dialogs}
             messageChange={this.props.updateNewMessageBody}
@@ -37,7 +40,8 @@ class DialogContainer extends React.Component{
 
 let mapStateToProps = (state) => {
     return {
-        dialogs: state.dialogPage.dialogs
+        dialogs: state.dialogPage.dialogs,
+        isAuth: state.auth.isAuth
     }
 }
 
@@ -51,6 +55,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setDialogs: (dialogs)=>{
             dispatch(setDialogsCreator(dialogs))
+        },
+        setAuth:()=>{
+            dispatch(setAuthUserData())
         }
     }
 }
