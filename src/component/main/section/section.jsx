@@ -4,9 +4,13 @@ import Posts from "./Posts/posts";
 import PostContainer from "./Posts/PostContainer";
 import ProfileContainer from "./profile/pofileContainer.ksx";
 import Profile from "./profile/profile";
+import {connect} from "react-redux";
+import {setAuthUserData} from "../../../Redux/authReducer";
+import {Navigate} from "react-router-dom";
 
 
-const Section = ()=>{
+const Section = (props)=>{
+    if (props.isAuth === false) return <Navigate to={"/login"}/>
     return (
         <section>
             <ProfileContainer/>
@@ -14,4 +18,9 @@ const Section = ()=>{
         </section>
     )
 }
-export default Section
+let mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+export default connect(mapStateToProps, {setAuthUserData}) (Section)

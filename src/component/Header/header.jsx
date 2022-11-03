@@ -3,12 +3,14 @@ import style from "./header.module.css"
 import {connect} from "react-redux";
 import {setAuthUserData} from "../../Redux/authReducer";
 import {NavLink} from "react-router-dom";
+import LoginOut from "./loginOut/loginOut";
+
 
 
 const Header = (props)=>{
     return (
         <header className={style.header}>
-            {props.isAuth ? "Залогинено": <NavLink to={"/login"}>Login</NavLink>}
+            {props.isAuth ? <LoginOut/> : <NavLink to={"/login"}>Login</NavLink>}
 
         </header>
     )
@@ -19,4 +21,4 @@ let mapStateToProps =(state)=>{
     }
 }
 
-export default connect(mapStateToProps, setAuthUserData)(Header)
+export default connect(mapStateToProps, {setAuthUserData})(Header)

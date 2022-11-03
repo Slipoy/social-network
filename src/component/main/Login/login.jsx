@@ -10,19 +10,26 @@ const Login = (props)=> {
     // const submitHandler = () => {
     //     props.setAuthUserData();
     // }
+    let login = React.createRef()
+    let password = React.createRef()
     return(
         <div className={style.login}>
             <form action="">
                 <div>
                     <label htmlFor="">Login</label><br/>
-                    <input type="text"/>
+                    <input ref={login} type="text"/>
                 </div>
                 <div>
                     <label htmlFor="">Password</label><br/>
-                    <input type="text"/>
+                    <input ref={password} type="text"/>
                 </div>
-                <button onClick={()=>props.setAuthUserData()}>Login</button>
+                <button onClick={()=>props.setAuthUserData(login.current.value, password.current.value)}>Login</button>
             </form>
+
+            <div>
+                <p>login: qwerty</p>
+                <p>password: qwerty</p>
+            </div>
 
         </div>
     )

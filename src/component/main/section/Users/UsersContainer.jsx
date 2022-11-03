@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {followCreator, setUsersCreator, unfollowCreator} from "../../../../Redux/usersReducer";
 import style from "./users.module.css";
 import image from "../../../../img/photo_2022-10-06_12-19-26.jpg"
+import {Navigate} from "react-router-dom";
 
 
 class UserContainer extends React.Component{
@@ -114,6 +115,7 @@ class UserContainer extends React.Component{
     }
 
     render() {
+        if (this.props.isAuth === false) return <Navigate to={"/login"}/>
         return (
                 <Users users={this.props.users}
                 follow={this.props.followUser}
@@ -125,7 +127,8 @@ class UserContainer extends React.Component{
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users
+        users: state.usersPage.users,
+        isAuth: state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch) => {
