@@ -11,7 +11,13 @@ const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
 const SET_DIALOGS = "SET_DIALOGS"
 
 let initialState = {
-    dialogs: [],
+    dialogs: [
+        {id: 0, name: 'Alex Ivanov', icon: user1, message: "Hello", returnMessages: [{message: "test"}, {message: "test"}]},
+        {id: 1, name: 'Mihail Ivanov', icon: user2, message:"Hi", returnMessages: [{message: "Hu"}]},
+        {id: 2, name: 'Olga Ivanov', icon: user3, message:"No", returnMessages: [{message: "Hf"}]},
+        {id: 3, name: 'Vadim Ivanov', icon: user4, message:"Maybe", returnMessages: [{message: "Ha"}]},
+        {id: 4, name: 'Kiril Ivanov', icon: user5, message:"By", returnMessages: [{message: "Ho"}]},
+        {id: 5, name: 'Nastya Ivanov', icon: user6, message:"Good!", returnMessages: [{message: "Hi"}]}],
     newMessageBody: ""
 }
 const dialogsReducer = (state = initialState, action)=>{

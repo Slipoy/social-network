@@ -7,7 +7,14 @@ const SET_POSTS = "SET_POSTS"
 const UP_LIKE = "UP_LIKE"
 
 let initialState = {
-    posts: [],
+    posts: [
+        {id: 1, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 2, like: false},
+        {id: 2, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 20, like: false},
+        {id: 3, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 12, like: false},
+        {id: 4, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 22, like: false},
+        {id: 5, message: 'This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English. message', likeCount: 5, like: false},
+        {id: 6, message: '6 This page contains texts in English for the 5th grade. Reading contributes to the development of clear and precise thinking, and, as a result, speech. Therefore, we recommend reading in English.', likeCount: 2, like: false}
+    ],
     newPostText: ""
 }
 const postReducer = (state = initialState, action)=>{

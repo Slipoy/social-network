@@ -1,5 +1,4 @@
 import React from "react";
-
 import Header from "./component/Header/header";
 import Main from "./component/main/main";
 import Section from "./component/main/section/section";
@@ -10,9 +9,8 @@ import Videos from "./component/main/Video/video";
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Bar from "./component/main/MiniBar/minibar";
-import DialogContainer from "./component/main/Dialogs/dialogContainer";
-import UsersContainer from "./component/main/section/Users/UsersContainer";
 import Login from "./component/main/Login/login";
+import Users from "./component/main/Users/users";
 
 
 
@@ -26,9 +24,9 @@ function App() {
               <Main>
                   <Nav/>
                   <Routes>
-                      <Route path="profile/*" element={<Section name="section" />}/>
-                      <Route path="message/*" element={<DialogContainer/>}/>
-                      <Route path='/users/' element={<UsersContainer />}/>
+                      <Route path="profile/:userId" element={<Section name="section" />}/>
+                      <Route path="message/*" element={<Dialogs/>}/>
+                      <Route path='/users/' element={<Users/>}/>
                       <Route path="videos/" element={<Videos/>}/>
                       <Route path="/login" element={<Login/>}/>
                   </Routes>

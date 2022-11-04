@@ -2,6 +2,11 @@ import React from "react";
 import style from "./dialogs.module.css"
 import {NavLink} from "react-router-dom";
 import {Route, Routes} from "react-router-dom";
+import {sendMessageCreator, setDialogsCreator, updateNewMessageCreator} from "../../../Redux/dialogReducer";
+import {setAuthUserData} from "../../../Redux/authReducer";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 
 const DialogItem = (props) => {
@@ -37,16 +42,40 @@ const Dialogs = (props)=>{
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
                 <p className={style.description}>Ваши друзья</p>
-                {props.users.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)}
+                {props.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} icon={dialog.icon}/>)}
             </div>
             <div className={style.messages}>
                 <p className={style.historyDescription}>Ваши сообщения</p>
                 <Routes>
-                    {props.users.map(route => <Route path={"dialogs/" + route.id} element={<Message userId={route.id} btnChange={props.messageChange} btnSend={props.send} messages={route.returnMessages}/>}/>)}
+                    {props.dialogs.map(route => <Route path={"dialogs/" + route.id} element={<Message userId={route.id} btnChange={props.updateNewMessageBody} btnSend={props.sendMessage} messages={route.returnMessages}/>}/>)}
                 </Routes>
             </div>
         </div>
     )
 }
 
-export default Dialogs
+let mapStateToProps = (state) => {
+    return {
+        dialogs: state.dialogPage.dialogs,
+        isAuth: state.auth.isAuth
+    }
+}
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        sendMessage: (id) => {
+            dispatch(sendMessageCreator(id));
+        },
+        updateNewMessageBody: (body) => {
+            dispatch(updateNewMessageCreator(body))
+        },
+        setDialogs: (dialogs)=>{
+            dispatch(setDialogsCreator(dialogs))
+        },
+        setAuth:()=>{
+            dispatch(setAuthUserData())
+        }
+    }
+}
+
+export default compose(connect(mapStateToProps,mapDispatchToProps),withAuthRedirect) (Dialogs)

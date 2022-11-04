@@ -3,7 +3,14 @@ import img from './icon/photo_2022-10-06_12-19-26.jpg'
 import style from './posts.module.css'
 import imgLike from '../../../../img/like2.png'
 import likeTrue from "../../../../img/lukitrue.png"
-import posts from "./posts";
+import {
+    addPostActionCreator,
+    setPostsCreator,
+    updateNewPostTextActionCreator,
+    upLikeCreator
+} from "../../../../Redux/postReducer";
+import {compose} from "redux";
+import {connect} from "react-redux";
 
 const Post = (props)=>{
     return(
@@ -32,7 +39,7 @@ const Posts = (props)=>{
         <div className={style.postsDisplay}>
             <div className={style.createPost}>
                 <p>My News</p>
-                <textarea ref={newPostElement} onChange={()=>{props.changePost(newPostElement.current.value)}}></textarea>
+                <textarea ref={newPostElement} onChange={()=>{props.updateNewPostText(newPostElement.current.value)}}></textarea>
                 <button onClick={()=>{newPostElement.current.value = ""; props.addPost()}}>Post</button>
             </div>
             <div className={style.posts}>
@@ -42,4 +49,27 @@ const Posts = (props)=>{
 
     )
 }
-export default Posts
+let mapStateToProps = (state) =>{
+    return{
+        posts: state.postPage.posts,
+    }
+}
+let mapDispatchToProps = (dispatch)=>{
+    return {
+        updateNewPostText: (text) => {
+            let action = updateNewPostTextActionCreator(text)
+            dispatch(action)
+        },
+        addPost: ()=>{
+            dispatch(addPostActionCreator());
+        },
+        setPosts: (posts)=>{
+            dispatch(setPostsCreator(posts))
+        },
+        upLike: (key)=>{
+            dispatch(upLikeCreator(key))
+        }
+    }
+}
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(Posts)
